@@ -20,16 +20,17 @@
 
 ## itemsテーブル
 
-| Column          | Type       | Option            |
-|-----------------|------------|-------------------|
-| name            | string     | null: false       |
-| price           | integer    | null: false       |
-| category        | integer    | null: false       |
-| condition       | integer    | null: false       |
-| charge          | integer    | null: false       |
-| shipment_source | integer    | null: false       |
-| shipment_date   | integer    | null: false       |
-| user            | references | foreign_key: true |
+| Column             | Type       | Option                         |
+|--------------------|------------|--------------------------------|
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| text               | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| charge_id          | integer    | null: false                    |
+| shipment_source_id | integer    | null: false                    |
+| shipment_date_id   | integer    | null: false                    |
+| user               | references | foreign_key: true, null: false |
 
 ### アソシエーション
 
@@ -43,10 +44,10 @@
 
 ## purchasesテーブル
 
-| Column          | Type       | Option            |
-|-----------------|------------|-------------------|
-| user            | references | foreign_key: true |
-| item            | references | foreign_key: true |
+| Column | Type       | Option                         |
+|--------|------------|--------------------------------|
+| user   | references | foreign_key: true, null: false |
+| item   | references | foreign_key: true, null: false |
 
 ### アソシエーション
 
@@ -56,15 +57,15 @@
 
 ## addressesテーブル
 
-| Column        | Type       | Option            |
-|---------------|------------|-------------------|
-| postal_code   | string     | null: false       |
-| prefecture    | integer    | null: false       |
-| municipality  | string     | null: false       |
-| street_number | string     | null: false       |
-| building      | string     |                   |
-| phone         | string     | null: false       |
-| purchase      | references | foreign_key: true |
+| Column        | Type       | Option                         |
+|---------------|------------|--------------------------------|
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| municipality  | string     | null: false                    |
+| street_number | string     | null: false                    |
+| building      | string     |                                |
+| phone         | string     | null: false                    |
+| purchase      | references | foreign_key: true, null: false |
 
 ### アソシエーション
 
