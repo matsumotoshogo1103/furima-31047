@@ -1,24 +1,67 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column        | Type    | Option      |
+| --------------|---------|-------------|
+| nickname      | string  | null: false |
+| email         | string  | null: false |
+| password      | string  | null: false |
+| name_kanji    | string  | null: false |
+| name_katakana | string  | null: false |
+| birthday      | integer | null: false |
 
-* Ruby version
+### アソシエーション
 
-* System dependencies
+- has_many :items
+- has_many :purchases
 
-* Configuration
+## itemsテーブル
 
-* Database creation
+| Column          | Type       | Option            |
+|-----------------|------------|-------------------|
+| name            | string     | null: false       |
+| price           | integer    | null: false       |
+| category        | text       | null: false       |
+| condition       | text       | null: false       |
+| charge          | text       | null: false       |
+| shipment_source | text       | null: false       |
+| shipment_date   | text       | null: false       |
+| user            | references | foreign_key: true |
 
-* Database initialization
+### アソシエーション
 
-* How to run the test suite
+- belongs_to :user
+- has_one :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
+## purchasesテーブル
 
-* Deployment instructions
+| Column          | Type       | Option            |
+|-----------------|------------|-------------------|
+| credit_number   | integer    | null: false       |
+| expiration_date | integer    | null: false       |
+| security_code   | integer    | null: false       |
+| user            | references | foreign_key: true |
+| item            | references | foreign_key: true |
 
-* ...
+### アソシエーション
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+## addressesテーブル
+
+| Column        | Type       | Option            |
+|---------------|------------|-------------------|
+| postal_code   | integer    | null: false       |
+| prefecture    | text       | null: false       |
+| municipality  | text       | null: false       |
+| street_number | text       | null: false       |
+| building      | text       |                   |
+| phone         | integer    | null: false       |
+| purchase      | references | foreign_key: true |
+
+### アソシエーション
+
+- belongs_to :purchase
