@@ -8,7 +8,7 @@ FactoryBot.define do
     charge_id          { 2 }
     shipment_source_id { 2 }
     shipment_date_id   { 2 }
-    
+
     association :user
 
     after(:build) do |item|

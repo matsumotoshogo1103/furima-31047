@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment_source
   belongs_to_active_hash :shipment_date
 
-
   with_options presence: true do
     validates :name
     validates :text
@@ -23,9 +22,8 @@ class Item < ApplicationRecord
       validates :shipment_date_id
     end
 
-    with_options format: { with: /\A[0-9]+\z/ }, numericality: { only_integer: true,greater_than: 299, less_than: 10000000 } do
+    with_options format: { with: /\A[0-9]+\z/ }, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 } do
       validates :price
     end
-
   end
 end
