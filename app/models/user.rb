@@ -20,4 +20,6 @@ class User < ApplicationRecord
       validates :password
     end
   end
+
+  has_many :items
 end
