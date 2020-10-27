@@ -5,5 +5,6 @@ FactoryBot.define do
     municipality  { '目黒区自由が丘' }
     street_number { '3-10-19' }
     phone         {'09012345678'}
+    token         {'testtoken'}
   end
 end

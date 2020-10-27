@@ -52,4 +52,10 @@ RSpec.describe ItemPurchase, type: :model do
     @item_purchase.valid?
     expect(@item_purchase.errors.full_messages). to include "Phone is invalid"
   end
+
+  it '商品購入時にtokenが必要であること' do
+    @item_purchase.token = nil
+    @item_purchase.valid?
+    expect(@item_purchase.errors.full_messages).to include "Token can't be blank"
+  end
 end
